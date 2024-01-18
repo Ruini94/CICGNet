@@ -1,19 +1,11 @@
-# AIMHNet: An Attribute-Insensitive Multi-scale Hourglass network for rain streaks and raindrop removal
+# CICGNet: Content-illumination Coupling Guided Low-light Image Enhancement Network
 ## Abstract
-##### Deep learning has made great progress in single image rain removal. Most recent methods improve performance by increasing the depth of the network. To fully extract local and global features while reducing inference time, we propose a top-to-down attribute-insensitive multi-scale hourglass network for rain streaks and raindrops removal. Considering the difference in the size, shape, orientation and density of rain streaks and raindrops, inspired by the performance of hourglass architecture to capture multi-scale features in human pose estimation, we introduce an hourglass module to remove rain streaks and raindrops in a unified framework. This feature extraction module could capture the characteristics of rain streaks and raindrops with different attributes. These stacked hourglass blocks down-sample features and then up-sample them back to the original shape based on discrete wavelet transform (DWT) and inverse discrete wavelet transform (IDWT). We perform five sets of experiments on synthetic and real-world datasets to validate the effectiveness of our network on rain streaks and raindrop removal. The qualitative and quantitative results show that our method is suitable for removing rain streaks and raindrops.
+##### Low-light enhancement algorithms need to simultaneously deal with problems such as uneven illumination, prone to structural distortion and color oversaturation. This paper proposes a content-illumination coupling guided low-light image enhancement network (CICGNet), it develops a truss topology as backbone, it follows Retinex to decompose low-light image component in an end-to-end way. The preservation of content features and the enhancement of illumination features are carried out along with depth and width direction of the truss topology architecture. The extraction of content component and illumination component consider improving the reusability of features. Illumination component uses pre- and post-activation features at different depth levels. Content component maintains content details in different spatial resolutions simultaneously along depth and width of the network. The decomposition and reconstruction of features are iterated multiple times based on the truss topology, the extracted features in the previous stages are used in subsequent stages. The network progressively enhances the illumination component and maintains the content component based on Retinex. The proposed algorithm demonstrates better performance compared with advanced attention-based low-light enhancement algorithms and state-of-the-art image restoration algorithms. We perform ablation studies and demonstrate the impact of low-light enhancement algorithm on subsequent high-level vision tasks. Code is available at: https://github.com/Ruini94/CICGNet
 ### 
 ***
 ## Experiments
-### Requirements
-* lpips
-* pytorch_wavelets
-* pytorch_msssim
 
 ### Dataset Preparation
-#### Please download Rain1200,RainCityscapes and RainDS：
-[Rain1200](https://drive.google.com/file/d/1cMXWICiblTsRl1zjN8FizF5hXOpVOJz4/view?usp=sharing)  
-[RainCityscapes](https://www.cityscapes-dataset.com/downloads/)  
-[RainDS](https://drive.google.com/file/d/12yN6avKi4Tkrnqa3sMUmyyf4FET9npOT/view?usp=sharing)
 #### please put datasets in
 > data_path
 >> trainA  
@@ -23,6 +15,6 @@
 ***
 ## Usage
 ### train
-#### `python main.py -name Rain1200 -root /data/users/rain_dataset/Rain1200`
+#### `python main.py`
 ### test
-#### `python test_metrics.py`
+#### `python evaluate.py`
